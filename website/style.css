@@ -41,7 +41,6 @@
   input[type="submit"]:hover {
     background-color: #f9a8c4;
   }
-
   .calendar {
     display: flex;
     flex-wrap: wrap;
@@ -53,7 +52,6 @@
     text-align: center;
     padding: 20px 0;
     box-sizing: border-box;
-    
   }
   .entry-card {
     display: flex;
@@ -75,4 +73,10 @@
   .emotion {
     font-size: 16px;
     margin-bottom: 10px;
+  }
+  .text {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    display: none;
   }

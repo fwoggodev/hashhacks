@@ -15,7 +15,7 @@ CORS(app)
 api = Api(app)
 
 
-filename = "journal.json"
+filename = "./website/journal.json"
 
 
 def add_entry(text,name):
