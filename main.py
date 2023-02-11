@@ -6,14 +6,19 @@ from textblob import TextBlob
 
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app)
+
 api = Api(app)
+
 
 filename = "journal.json"
 
 
-def add_entry(text):
+def add_entry(text,name):
     if os.path.exists(filename):
         with open(filename, "r") as file:
             journal = json.load(file)
@@ -29,6 +34,7 @@ def add_entry(text):
                 'text': text,
                 'date_time': str(datetime.datetime.now()),
                 'emotion': "",
+                'Name': name
             }
             journal.append(today_entry)
     else:
@@ -36,6 +42,7 @@ def add_entry(text):
             'text': text,
             'date_time': str(datetime.datetime.now()),
             'emotion': "",
+            'Name': name
         }]
 
     nltk_sentiment = SentimentIntensityAnalyzer().polarity_scores(journal[0]['text'])
@@ -82,13 +89,34 @@ def view_sentiment_calendar():
 
     else:
         print("No journal entries found.")
+@app.before_request
+def options_autoreply():
+    if request.method == 'OPTIONS':
+        resp = app.make_default_options_response()
+        headers = None
+        if 'ACCESS_CONTROL_REQUEST_HEADERS' in request.headers:
+            headers = request.headers['ACCESS_CONTROL_REQUEST_HEADERS']
+        h = resp.headers
+        h['Access-Control-Allow-Origin'] = request.headers['Origin']
+        h['Access-Control-Allow-Methods'] = "DELETE, GET, POST, PUT"
+        h['Access-Control-Allow-Headers'] = headers
+        return resp
+
+@app.after_request
+def set_allow_origin(resp):
+    h = resp.headers
+    h['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 class Journal(Resource):
     def post(self):
         text = request.get_json()["text"]
+        name = request.get_json()["name"]
         if text:
-            emotion = add_entry(text)
-            return {"message": "Success", "emotion": emotion}, 200
+            emotion = add_entry(text,name)
+            response = jsonify({"message": "Success", "emotion": emotion})
+
+            return response
         else:
             return {"error": "Text field is missing."}, 400
 

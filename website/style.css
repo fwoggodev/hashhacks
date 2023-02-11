@@ -1,0 +1,43 @@
+.card {
+    width: 500px;
+    height: 200px;
+    background-color: #9DF1DF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #8DCBE6;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fb8ca4;
+  }
+
+  input[type="text"] {
+    width: 80%;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+
+  input[type="submit"] {
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #fb8ca4;
+    color: #ffffff;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #f9a8c4;
+  }
