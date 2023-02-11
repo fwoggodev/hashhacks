@@ -1,33 +1,8 @@
 let calendarContainer = document.querySelector(".calendar");
 
-let data =
-[
-    {
-        "text": "hAPPY DAY",
-        "date_time": "2023-02-10 16:52:51.779204",
-        "emotion": "Positive",
-        "Name": "Development"
-    },
-    {
-      "text": "Did you know that today is a happy day?",
-      "date_time": "2023-02-9 16:52:51.779204",
-      "emotion": "Positive",
-      "Name": "Development"
-  },
-  {
-    "text": "Sexy Day",
-    "date_time": "2023-02-8 16:52:51.779204",
-    "emotion": "Positive",
-    "Name": "Development"
-},
-{
-  "text": "Sad Day",
-  "date_time": "2023-02-7 16:52:51.779204",
-  "emotion": "Negative",
-  "Name": "Development"
-},
-];
-
+fetch('http://127.0.0.1:9999/journalist')
+  .then(response => response.json())
+  .then(data => {
     for (let i = 0; i < data.length; i++) {
       let date = new Date(data[i].date_time);
       let dateString = date.getDate();
@@ -60,3 +35,7 @@ let data =
 
       calendarContainer.appendChild(dayContainer);
     }
+  })
+  .catch(error => {
+    console.error('Error loading journal data:', error);
+  });

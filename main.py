@@ -119,8 +119,17 @@ class Journal(Resource):
             return response
         else:
             return {"error": "Text field is missing."}, 400
+        
+class journalist(Resource):
+    def get(self):
+        data = "./website/journal.json"
+        with open(data, "r") as file:
+            journal = json.load(file)
+        return journal
+
 
 api.add_resource(Journal, '/journal')
+api.add_resource(journalist, '/journalist')
 
 if __name__ == '__main__':
     app.run(debug=True,port=9999)
