@@ -16,6 +16,13 @@ improve mental well-being.
 - [@arnavnegi26](https://github.com/arnavnegi26)
 - [@LavanyaArora0](https://github.com/LavanyaArora08)
 
+## Screenshots
+
+![App Screenshot](https://github.com/fwoggodev/hashhacks/blob/master/screenshots/home.png?raw=true)
+
+![App Screenshot 2 ](https://github.com/fwoggodev/hashhacks/blob/master/screenshots/home_extended.png?raw=true)
+
+
 ## Installation
 
 To run Lavya
