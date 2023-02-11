@@ -119,14 +119,23 @@
 <body>
     <script src="logic.js"></script>
     <div class="card">
-        <text align="center">
-        <input id="text-input" type="text" placeholder="Write about your Day Here">
-        <input id="submit-button" type="submit" value="Write!">
-      </div>
+      <text align="center">
+      <input id="text-input" type="text" placeholder="Write about your Day Here">
+      <input id="submit-button" type="submit" value="Write!">
+    </div>
 
-      <div class="calendar">
-        <script src="calendar.js"></script>
-      </div>
+    <div class="calendar">
+      <script src="calendar.js"></script>
+    </div>
+  
+  <script>
+      document.getElementById('submit-button').addEventListener('click', function() {
+          // Add your logic for handling the form submission here
+          
+          // Reload the page
+          location.reload();
+      });
+  </script>
     
 </body>
 </html>
