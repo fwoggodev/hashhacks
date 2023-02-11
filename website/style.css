@@ -9,7 +9,6 @@
     padding: 20px;
     text-align: center;
   }
-
   h1 {
     font-size: 24px;
     font-weight: bold;
@@ -21,7 +20,7 @@
     width: 80%;
     height: 30px;
     border-radius: 15px;
-    border: none;
+    border: 2px solid black;
     padding: 10px;
     margin-bottom: 20px;
     font-size: 18px;
