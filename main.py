@@ -49,8 +49,43 @@ def add_entry():
     
     print(f"Emotion: {journal[0]['emotion']}")
 
+def view_sentiment_calendar():
+    if os.path.exists(filename):
+        with open(filename, "r") as file:
+            journal = json.load(file)
+        
+        emotions = []
+        for entry in journal:
+            emotions.append(entry['emotion'])
+        
+        date_list = [datetime.datetime.strptime(entry['date_time'], "%Y-%m-%d %H:%M:%S.%f").date() for entry in journal]
+        unique_dates = list(set(date_list))
+        unique_dates.sort()
+        
+        calendar_data = {}
+        for date in unique_dates:
+            calendar_data[date.strftime("%B %d, %Y")] = [emotions[i] for i in range(len(date_list)) if date_list[i] == date]
+        
+        for date, emotion_list in calendar_data.items():
+            date_obj = datetime.datetime.strptime(date, "%B %d, %Y")
+            date_of_week = date_obj.strftime("%a")
+            positive_count = emotion_list.count("Positive")
+            negative_count = emotion_list.count("Negative")
+            total = positive_count + negative_count
+            print(f"{date} ({date_of_week}): {emotions[0]}")
 
+        print("\n")
 
+    else:
+        print("No journal entries found.")
+
+def show_choices():
+    print("\n1. Add journal entry")
+    print("2. View sentiment analysis in a calendar form")
+    print("3. View Menu")
+    print("4. Exit")
+
+show_choices()
 while True:
 
     choice = int(input("Enter your choice:"))
@@ -58,6 +93,10 @@ while True:
     if choice == 1:
         add_entry()
     elif choice == 2:
+        view_sentiment_calendar()
+    elif choice == 3:
+        show_choices()
+    elif choice == 4:
         break
     else:
         print("Invalid choice.")
