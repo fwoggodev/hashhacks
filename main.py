@@ -51,11 +51,12 @@ def add_entry(text,name):
     textblob_score = TextBlob(journal[0]['text']).sentiment.polarity
 
     print(f"NLTK Score: {nltk_score}")
+    
+    journal[0]['emotion'] = "Negative"
 
     if nltk_score > 0 or textblob_score > 0:
         journal[0]['emotion'] = "Positive"
-    else:
-        journal[0]['emotion'] = "Negative"
+        
 
     with open(filename, "w") as file:
         json.dump(journal, file, indent=4)
