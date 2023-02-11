@@ -6,7 +6,7 @@
     box-shadow: 0px 0px 10px #8DCBE6;
     margin: auto;
     margin-top: 50px;
-    padding: 20px;
+    padding:20px;
     text-align: center;
   }
   h1 {
@@ -18,7 +18,7 @@
 
   input[type="text"] {
     width: 80%;
-    height: 30px;
+    height: 50pxpx;
     border-radius: 15px;
     border: 2px solid black;
     padding: 10px;
@@ -51,6 +51,7 @@
     text-align: center;
     padding: 20px 0;
     box-sizing: border-box;
+    margin: auto;
   }
   .entry-card {
     display: flex;
