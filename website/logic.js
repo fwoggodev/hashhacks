@@ -20,7 +20,10 @@ submitButton.addEventListener("click", function() {
     .then(response => response.json())
     .then(json => {
       result.innerHTML = json.id;
+      
     });
+    document.getElementById("submit-button").value = "Written!";
+    document.getElementById("submit-button").disabled = true;
 });
 
 });
