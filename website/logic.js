@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-  const submitButton = document.getElementById("submit-button");
+const submitButton = document.getElementById("submit-button");
 const textInput = document.getElementById("text-input");
 const result = document.getElementById("result");
 
@@ -24,6 +24,7 @@ submitButton.addEventListener("click", function() {
     });
     document.getElementById("submit-button").value = "Written!";
     document.getElementById("submit-button").disabled = true;
+    setTimeout(function(){location.reload()},1000);
 });
 
 });
